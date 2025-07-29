@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<header>
+    <nav class="services">
+        <h1>News</h1>
+        {% for cats in cat%}
+        <p class="n">{{cats.title}}</p>
+        {%endfor%}
+    </nav>
+    <div class="search-box">
+        <input id="search" class="search" type="text" placeholder="Поиск новостей...">
+    </div>
+</header>
+
+<body>
+    <section class="f1rst">
+        <div class="control">
+            <img class="img" src="{{news.image.image.url}}" alt="...">
+            <div class="text">
+                <h1>{{news.title}}</h1>
+                <p>{{news.description}}</p>
+                <div class="first">
+                    <p class="first1">Автор:{{news.author}}</p>
+                    <p class="first1">Категория:{{news.cat}}</p>
+                </div>
+                <div class="second">
+                    <p class="second2">Теги:{{news.tag}}</p>
+                    <p class="second2">Просмотры:{{news.views}}</p>
+                </div>
+                <div class="back">
+                    <button><a href="http://127.0.0.1:8000">Назад</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<style>
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .back button {
+        background-color: #65bed4;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .back button:hover {
+        background-color: #555655;
+    }
+
+    .img {
+        display: flex;
+        align-items: center;
+        margin: 15px auto;
+        max-width: 450px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #333;
+    }
+
+    header {
+        background-color: #babcba;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        font-size: 26px;
+        margin: 0;
+        margin-right: 30px;
+    }
+
+    .services {
+        display: flex;
+        gap: 25px;
+    }
+
+    .services .n {
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .services .n:hover {
+        color: #ffffff;
+    }
+
+    .container {
+        padding: 30px 40px;
+    }
+
+    .search-box {
+        text-align: center;
+    }
+
+    .search {
+        padding: 12px 18px;
+        max-width: 500px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .search:focus {
+        border-color: #65bed4;
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+        margin: 15px auto;
+        flex-direction: column;
+    }
+
+    .first {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .second {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+
+    }
+</style>
+
+</html>
