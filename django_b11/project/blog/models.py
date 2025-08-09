@@ -107,3 +107,7 @@ class NewsImage(models.Model):
     def __str__(self):
         return f"Фото-{self.news.title}"
 
+class ImageReplaceForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = ['image']

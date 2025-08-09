@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
+
+<body>
     <header>
         <nav class="services">
             <h1><a class="as" href="http://127.0.0.1:8000">News</a></h1>
@@ -18,36 +20,31 @@
                     href="http://127.0.0.1:8000/category/{{cats.id}}">{{cats.title}}</a></p>
             {%endfor%}
         </nav>
+        <div class="button-group">
+            <div class="button-group">
+                <a href="http://127.0.0.1:8000/create"><button>Добавить новость</button></a>
+                <a href="http://127.0.0.1:8000/creat_tag"><button>Добавить теги</button></a>
+                <a href="http://127.0.0.1:8000/creat_category"><button>Добавить категории</button></a>
+            </div>
+        </div>
         <form method="get" action="">
             <div class="search-box">
-                <input id="search" class="search" name="search" type="text" placeholder="Поиск новостей..." value="{{search|default:''}}" autocomplete="off">
+                <input id="search" class="search" name="search" type="text" placeholder="Поиск новостей..."
+                    value="{{search|default:''}}" autocomplete="off">
                 <button class="search-button" type="submit">Поиск</button>
             </div>
         </form>
-
     </header>
-<body>
-    <section class="f1rst">
-        <div class="control">
-            <img class="img" src="{{news.image.image.url}}" alt="...">
-            <div class="text">
-                <h1>{{news.title}}</h1>
-                <p>{{news.description}}</p>
-                <div class="first">
-                    <p class="first1">Автор:{{news.author}}</p>
-                    <p class="first1">Категория:{{news.cat}}</p>
-                </div>
-                <div class="second">
-                    <p class="second2">Теги:{{news.tag}}</p>
-                    <p class="second2">Просмотры:{{news.views}}</p>
-                </div>
-                <div class="back">
-                    <button><a href="http://127.0.0.1:8000">Назад</a></button>
-                </div>
+
+    <main>
+        <div class="text">
+            <img class="img" src="{{img.image.image.url}}" alt="asas">
+            <div class="first">
+                <button class="button"><a href=""></a>Заменить</button>
+                <button class="button"><a href="http://127.0.0.1:8000/delete_img">Удалить</a></button>
             </div>
         </div>
-    </section>
-
+    </main>
 </body>
 <style>
     a {
@@ -55,7 +52,7 @@
         color: #ffffff;
     }
 
-    .back button {
+    .button {
         background-color: #65bed4;
         color: white;
         border: none;
@@ -66,7 +63,7 @@
         transition: background-color 0.3s;
     }
 
-    .back button:hover {
+    .button:hover {
         background-color: #555655;
     }
 

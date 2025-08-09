@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="services">
+            <h1><a class="as" href="http://127.0.0.1:8000">News</a></h1>
+            {% for i in cat%}
+            <p class="n"><a id="wert"
+                    class="{% if selected_category and selected_category.id == cats.id%}active{% endif%}"
+                    href="http://127.0.0.1:8000/category/{{cats.id}}">{{i.title}}</a></p>
+            {%endfor%}
+        </nav>
+        <div class="button-group">
+            <a href="http://127.0.0.1:8000/create"><button>Добавить новость</button></a>
+            <a href="http://127.0.0.1:8000/creat_tag"><button>Добавить теги</button></a>
+            <a href="http://127.0.0.1:8000/creat_category"><button>Добавить категории</button></a>
+        </div>
+        <form method="get" action="">
+            <div class="search-box">
+                <input id="search" class="search" name="search" type="text" placeholder="Поиск новостей..."
+                    value="{{search|default:''}}" autocomplete="off">
+                <button class="search-button" type="submit">Поиск</button>
+            </div>
+        </form>
+
+    </header>
+
+
+    <main>
+        <section class="create">
+            <div class="control">
+                <div class="title">
+                    <h1>Изменить новость</h1>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data" class="news-form">
+                    {%csrf_token%}
+                    <div class="topic">
+                        <input value="{{news.title}}" type="text" placeholder="Заголовок">
+                        <input value="{{news.description}}" type="text" placeholder="Описание">
+                        <select name="cat" id="">
+                            {%for cat in cat%}
+                            <option  value=""
+                            {% if cat.id == news.cat.id %}
+                            selected
+                            {%endif%}>
+                            
+                            {{cat.title}}</option>
+                            {%endfor%}
+                        </select>
+                        <select name="multiply" id="ff" multiple>
+                            {%for tag in tag%}
+                            <option value="multiply">{{tag.name}}</option>
+                            {%endfor%}
+                        </select>
+
+                    </div>
+                    <button type="submit">Сохранить</button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+</body>
+<style>
+    .create {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        background: #f5f7fa;
+        min-height: 80vh;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .control {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .title h1 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: #333;
+        text-align: center;
+    }
+
+    .topic {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .topic input[type="text"],
+    select {
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+
+    .topic input[type="text"],
+    select:focus {
+        border-color: #333;
+    }
+
+    main button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #ccc;
+    }
+
+    header {
+        background-color: #babcba;
+        margin: 0;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        font-size: 26px;
+        margin: 0;
+        margin-right: 30px;
+
+        .as {
+            color: #333;
+        }
+    }
+
+    .services {
+        display: flex;
+        gap: 25px;
+
+        #wert:hover {
+            color: #333;
+            border-bottom: solid 2px #333;
+
+        }
+    }
+
+    .services .n {
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .services .n:hover {
+        color: #ffffff;
+    }
+
+    .container {
+        padding: 30px 40px;
+    }
+
+    .search-box {
+        text-align: center;
+    }
+
+    .search {
+        padding: 12px 18px;
+        max-width: 500px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .search:focus {
+        border-color: #65bed4;
+    }
+</style>
+
+</html>

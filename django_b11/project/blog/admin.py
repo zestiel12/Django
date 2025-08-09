@@ -5,6 +5,10 @@ from django.utils.safestring import mark_safe
 
 from .models import News,NewsImage,Category,Tag
 
+class NewsImageInline(admin.TabularInline):
+    model = NewsImage
+    extra = 0
+
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ['title','description','is_published','views','get_image']

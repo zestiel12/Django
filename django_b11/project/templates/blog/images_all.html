@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News.kg</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-    <header>
+       <header>
         <nav class="services">
             <h1><a class="as" href="http://127.0.0.1:8000">News</a></h1>
             {% for cats in cat%}
@@ -39,9 +35,8 @@
         </form>
 
     </header>
-
-
-    <section class="firstSection">
+    <main>
+            <section class="firstSection">
         <div class="container">
 
             <div class="products">
@@ -52,13 +47,8 @@
                     {% else %}
                     <img src="https://via.placeholder.com/300x180?text=No+Image" alt="No Image">
                     {% endif %}
-                    <h3 class="title">{{ news.title }}</h3>
-                    <p>{{ news.description|truncatechars:100 }}</p>
-                    <p><strong>Категория:</strong> {{ news.cat.title }}</p>
-                    <p><strong>Теги:</strong>{{news.tag.name}}</p>
-                    <p><strong>Просмотры:</strong>{{news.views}}</p>
                     <button><a href="http://127.0.0.1:8000/{{news.id}}">View</a></button>
-                    <button><a href="http://127.0.0.1:8000/change/{{news.id}}">Change</a></button>
+                    <button><a href="http://127.0.0.1:8000/change_img/{{news.id}}">Change</a></button>
                 </div>
                 {% endfor %}
 
@@ -66,7 +56,7 @@
 
         </div>
     </section>
-
+    </main>
 </body>
 <style>
     .active {

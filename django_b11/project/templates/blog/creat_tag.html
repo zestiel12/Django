@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h2>Создать тег</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="Название тега">
+  <button type="submit">Создать</button>
+</form>
+
+<h3>Существующие теги:</h3>
+<ul>
+  {% for tag in tags %}
+    <li>{{ tag.name }}</li>
+  {% empty %}
+    <li>Нет тегов</li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>

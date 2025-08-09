@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Создать категорию</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="title" placeholder="Название категории">
+  <button type="submit">Изменить</button>
+</form>
+
+<h3>Существующие категории:</h3>
+<ul>
+  {% for cat in categories %}
+    <li><a href="http://127.0.0.1:8000/change_cat/{{category_id}}">{{ cat.title }}</a></li>
+  {% empty %}
+    <li>Нет категорий</li>
+  {% endfor %}
+</ul>
+    
+</body>
+</html>
